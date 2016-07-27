@@ -24,39 +24,55 @@
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <!--nav menu-->
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#blogs"><span class="glyphicon glyphicon-inbox"></span> Blogs</a></li>
-                            <li><a href="#reg"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <!--Trigger the modal-->
-                            <li><a href="" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <?php
+                                session_start();
+                                if(isset($_SESSION["login"])){
+                                    echo "
+                                        <li><a href='src/Logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+                                    ";
+                                }else{
+									echo "
+										<li><a href='#blogs'><span class='glyphicon glyphicon-inbox'></span> Blogs</a></li>
+                                        <li><a href='#reg'><span class='glyphicon glyphicon-user'></span> Sign Up</a></li>
+                                        <!--Trigger the modal-->
+                                        <li><a href='' data-toggle='modal' data-target='#loginModal'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
 
-                            <!--Login Modal-->
-                            <div class="modal fade" id="loginModal" role="dialog">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Login your Account</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form role="form">
-                                                <div class="form-group">
-                                                    <label for="email">Email:</label>
-                                                    <input type="email" class="form-control" id="email">
+                                        <!--Login Modal-->
+                                        <div class='modal fade' id='loginModal' role='dialog'>
+                                            <div class='modal-dialog modal-sm'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                                        <h4 class='modal-title'>Login your Account</h4>
+                                                    </div>
+                                                    <div class='modal-body'>
+
+                                                        <form role='form' action='src/Controller.php' method='post'>
+                                                            <div class='form-group'>
+                                                                <label for='email'>Email or Username:</label>
+                                                                <input type='email' class='form-control' id='email' name='email'>
+                                                            </div>
+                                                            <div class='form-group'>
+                                                                <label for='pwd'>Password:</label>
+                                                                <input type='password' class='form-control' id='pwd' name='pwd'>
+                                                            </div>
+                                                            <input type='submit' name='login' class='btn btn-default'>Submit</input>
+                                                        </form>
+
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                Fakeblog &copy; 2016
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="pwd">Password:</label>
-                                                    <input type="password" class="form-control" id="pwd">
                                                 </div>
-                                                <button type="submit" class="btn btn-default">Submit</button>
-                                            </form>
+                                            </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            Fakeblog &copy; 2016
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Login Modal-->
+                                        <!--Login Modal-->
+									";
+                                    
+                                }
+
+                                session_abort();
+                            ?>
                         </ul>
                         <!--end-line: nav menu-->
                     </div>
