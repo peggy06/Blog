@@ -25,7 +25,6 @@
                         <!--nav menu-->
                         <ul class="nav navbar-nav navbar-right">
                             <?php
-                                session_start();
                                 if(isset($_SESSION["login"])){
                                     echo "
                                         <li><a href='src/Logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>

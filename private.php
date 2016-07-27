@@ -8,6 +8,8 @@
  * Type: HTML Template
  */
 
+    session_start();
+    ((!isset($_SESSION["login"]))? header("Location: /"): "");
 ?>
 
 <html>
