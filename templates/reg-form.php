@@ -9,7 +9,7 @@
  */
 ?>
 
-<form action="modules/Register.php" role="form" method="post" enctype="multipart/form-data">
+<form action="src/Controller.php" role="form" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
@@ -26,7 +26,7 @@
         <input type="email" class="form-control" size="20" name="email" placeholder="Email" required />
     </div>
     <div class="form-group">
-        <input type="email" class="form-control" size="20" name="reEmail" placeholder="Re-enter Email" required />
+        <input type="text" class="form-control" size="20" name="username" placeholder="Username" required />
     </div>
     <div class="form-group">
         <input type="password" class="form-control" size="20" name="password" placeholder="Password" required/>
