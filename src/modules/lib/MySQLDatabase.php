@@ -16,7 +16,7 @@ class MySQLDatabase implements DatabaseInterface
         $servername='localhost';
         $username='root';
         $password='';
-        $dbname='dbBlog';
+        $dbname='dbFakeblog';
 
         $this->connection=mysqli_connect($servername, $username, $password, $dbname);
     }
@@ -48,7 +48,7 @@ class MySQLDatabase implements DatabaseInterface
         $this->disconnect();
     }
 
-    function delete($table, $field, $condition){
+    function delete($table, $condition){
         $this->connect();
         $query="DELETE FROM".$table." WHERE".$condition."";
         $this->disconnect();

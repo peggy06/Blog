@@ -15,5 +15,5 @@ interface DatabaseInterface
     public function select($tbl, $fld, $cond);
     public function insert($tbl, $fld, $val);
     public function update($tbl, $fld, $val, $cond);
-    public function delete($tbl, $fld, $val, $cond);
+    public function delete($tbl,$cond);
 }
