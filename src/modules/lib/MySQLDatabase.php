@@ -13,11 +13,7 @@ class MySQLDatabase implements DatabaseInterface
     protected  $connection;
 
     function connect(){
-        $servername='localhost';
-        $username='root';
-        $password='';
-        $dbname='dbFakeblog';
-
+        include '/../../../config/Database.php';
         $this->connection=mysqli_connect($servername, $username, $password, $dbname);
     }
 
@@ -30,8 +26,8 @@ class MySQLDatabase implements DatabaseInterface
         $this->connect();
         $query="SELECT ".$fields." FROM ".$table.(($condition==null)? "":" WHERE ".$condition."");
         $result=mysqli_query($this->connection, $query);
-        return $result;
         $this->disconnect();
+        return $result;
     }
 
     function insert($table, $fields, $values){
@@ -51,6 +47,7 @@ class MySQLDatabase implements DatabaseInterface
     function delete($table, $condition){
         $this->connect();
         $query="DELETE FROM".$table." WHERE".$condition."";
+        mysqli_query($this->connection, $query);
         $this->disconnect();
     }
 }

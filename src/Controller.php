@@ -19,16 +19,16 @@ function __autoload($class_name){
     }
 }
 
+
+$user=new Account;
+
 if($_POST!=null){
     if(isset($_POST["register"])){
-        $user=new Register();
-        $user->save();
+        $user->register();
     }elseif(isset($_POST["login"])){
-        $account=new Login();
-        $account->login();
-    }elseif(isset($_POST["logout"])){
-        $account=new Login();
-        $account->logout();
+        $user->login();
+    }elseif(isset($_POST["blog"])){
+        $user->save_blog();
     }
 }
 ?>

@@ -12,11 +12,13 @@
 
     //session test
     ((isset($_SESSION["login"]))? header("Location: private.php"): header("Locaion: /"));
-
+    ((isset($_SESSION["login_error"]))? session_unset($_SESSION["login_error"]):"");
 ?>
-<html>
+
+<!doctype html>
+<html lang="en">
     <head>
-        <title>Welcome to BlogSpot</title>
+        <title>Welcome to Fakeblog</title>
         <!--Load CSS-->
         <?php include 'src/css_loader.php';?>
 
@@ -46,7 +48,7 @@
                             <div class="jumbotron" id="banner">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <img src="assets/img/header/blog-banner.jpg" alt="blog" class="blog-img thumbnail img-responsive">
+                                        <img src="assets/images/header/blog-banner.jpg" alt="blog" class="blog-img thumbnail img-responsive">
                                     </div>
                                     <div class="col-lg-12">
                                         <p>
@@ -62,7 +64,7 @@
                             <div class="jumbotron" id="nature">
                                 <div class="row text-center center-block">
                                     <div class="col-lg-12">
-                                        <img src="assets/img/header/1446997501_bunny-easter-watch-wallpaper-nature-wallpapers-array-wallwuzz-hd-wallpaper-3497.jpg" alt="blog" class="blog-img thumbnail img-responsive">
+                                        <img src="assets/images/header/1446997501_bunny-easter-watch-wallpaper-nature-wallpapers-array-wallwuzz-hd-wallpaper-3497.jpg" alt="blog" class="blog-img thumbnail img-responsive">
                                     </div>
                                     <div class="col-lg-12">
                                         <p>
@@ -78,7 +80,7 @@
                             <div class="jumbotron" id="okay">
                                 <div class="row text-center center-block">
                                     <div class="col-lg-12">
-                                        <img src="assets/img/header/3D-Neon-Colorful-Desktop-HD-Wallpapers.jpg" alt="blog" class="blog-img thumbnail img-responsive">
+                                        <img src="assets/images/header/3D-Neon-Colorful-Desktop-HD-Wallpapers.jpg" alt="blog" class="blog-img thumbnail img-responsive">
                                     </div>
                                     <div class="col-lg-12">
                                         <p>

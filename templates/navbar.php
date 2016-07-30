@@ -20,6 +20,12 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-pencil small"></span> fakeblog</a>
+                        <?php
+                            if(isset($_SESSION["login_error"])){
+                                echo "<a href='/#reg'><btn class='btn btn-success' style='margin-top: 10px'>Sign Up</btn></a>";
+                            }
+
+                        ?>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <!--nav menu-->
@@ -29,6 +35,8 @@
                                     echo "
                                         <li><a href='src/Logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                                     ";
+                                }elseif(isset($_SESSION["login_error"])){
+                                    echo "<li>&nbsp;</li>";
                                 }else{
 									echo "
 										<li><a href='#blogs'><span class='glyphicon glyphicon-inbox'></span> Blogs</a></li>
@@ -49,13 +57,13 @@
                                                         <form role='form' action='src/Controller.php' method='post'>
                                                             <div class='form-group'>
                                                                 <label for='email'>Email or Username:</label>
-                                                                <input type='email' class='form-control' id='email' name='email'>
+                                                                <input type='email' class='form-control' id='email' name='email' required='require'>
                                                             </div>
                                                             <div class='form-group'>
                                                                 <label for='pwd'>Password:</label>
                                                                 <input type='password' class='form-control' id='pwd' name='pwd'>
                                                             </div>
-                                                            <input type='submit' name='login' class='btn btn-default'>Submit</input>
+                                                            <input type='submit' name='login' class='btn btn-default' value='Login'>&nbsp;</input>
                                                         </form>
 
                                                     </div>
