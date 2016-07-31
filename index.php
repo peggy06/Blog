@@ -5,7 +5,7 @@
  * Date: 7/18/2016
  * Time: 12:29 AM
  *
- * Type: HTML TEMPLATE
+ * Type: HTML Template
  */
 
     session_start();

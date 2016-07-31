@@ -5,10 +5,9 @@
  * User: jimuelpalaca
  * Date: 7/27/2016
  * Time: 2:35 AM
- *
  */
-include 'Str.php';
 
+include 'Str.php';
 class Hash
 {
     public static function make($str)

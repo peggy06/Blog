@@ -4,10 +4,15 @@
  * User: jimuelpalaca
  * Date: 7/27/2016
  * Time: 2:04 AM
+ *
+ * Type: Controller
  */
 
-
-//autoload class
+/**
+ * Auto Load Class
+ * if and only if you need to instantiate different classes
+ * maybe for future use.
+ **/
 function __autoload($class_name){
     $directories = array(
         'lib/',

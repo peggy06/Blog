@@ -5,6 +5,10 @@
  * User: jimuelpalaca
  * Date: 7/27/2016
  * Time: 1:44 AM
+ *
+ * wag niyo po sanang pagtawanan xD haha
+ * gawa-gawa ko lang po xD
+ * inspired sa Laravel
  */
 class Num
 {
@@ -17,5 +21,7 @@ class Num
         }
 
         return $random;
+        /**
+        **/
     }
 }

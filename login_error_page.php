@@ -4,6 +4,8 @@
  * User: jimuelpalaca
  * Date: 7/30/2016
  * Time: 7:13 PM
+ *
+ * Type: HTML Template
  */
 
 session_start();

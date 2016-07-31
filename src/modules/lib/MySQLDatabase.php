@@ -10,7 +10,7 @@ include 'interfaces/DatabaseInterface.php';
 
 class MySQLDatabase implements DatabaseInterface
 {
-    protected  $connection;
+    protected $connection;
 
     function connect(){
         include '/../../../config/Database.php';

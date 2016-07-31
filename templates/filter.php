@@ -4,6 +4,8 @@
  * User: jimuelpalaca
  * Date: 7/26/2016
  * Time: 10:34 PM
+ *
+ * Type: HTML Template
  */
 
 ?>

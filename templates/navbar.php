@@ -5,7 +5,7 @@
  * Date: 7/18/2016
  * Time: 12:59 AM
  *
- * Type: HTML TEMPLATE
+ * Type: HTML Template
  */
 
 ?>

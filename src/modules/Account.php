@@ -5,8 +5,6 @@
  * User: jimuelpalaca
  * Date: 7/25/2016
  * Time: 3:37 AM
- *
- *
  */
 
 include 'lib/MySQLDatabase.php';
@@ -16,11 +14,13 @@ include 'lib/Num.php';
 
 class Account extends MySQLDatabase
 {
+
     function login(){
         if($_POST!=null){
             $success=false;
             $email=$_POST["email"];
             $password=$_POST["pwd"];
+
 
             $data=$this->select("tbl_users","*","user_email='".$email."'");
             while($account=mysqli_fetch_assoc($data)){
@@ -29,6 +29,8 @@ class Account extends MySQLDatabase
                     $_SESSION["login"]=true;
                     $_SESSION["id"]=$account["user_id"];
                     $_SESSION["name"]=$account["user_fname"]." ".$account["user_lname"];
+
+                    $this->set_id($account["user_id"]);
 
                     $success=true;
 
@@ -61,10 +63,8 @@ class Account extends MySQLDatabase
             //set table and fields
             $table="tbl_users";
             $fields="user_id, username, user_email, user_password, user_fname, user_lname, user_bday, user_gender";
-
             //set values
             $values=$_id.",'".$_uname."','".$_email."','".$_pwd."','".$_fname."','".$_lname."','".$_bday."',".$_gender;
-
             //save data
             $this->insert($table,$fields,$values);
 
@@ -85,8 +85,10 @@ class Account extends MySQLDatabase
     function check_id($id){
         //set flag
         $duplicated=false;
-
-        //filter for user_id
+        /**
+         * Filter user_id
+         * Checks if generated id was already exist and used by other user
+        **/
         $data=$this->select("tbl_users","user_id","");
         while($saved=mysqli_fetch_assoc($data)){
             if($id==$saved["user_id"]){
@@ -96,6 +98,7 @@ class Account extends MySQLDatabase
                 $duplicated=false;
             }
         }
+
 
         if($duplicated){
             $this->generate_id();
@@ -135,33 +138,30 @@ class Account extends MySQLDatabase
     }
 
     function list_blogs(){
+        //filter blog post by current user
         $data=$this->select("tbl_blog","*","user_id=".$_SESSION["id"]."");
 
-        $first_occurrence=true;
         $clone=null;
         $tmp=null;
         $ctr=0;
 
         while($blog=mysqli_fetch_assoc($data)){
-
-            //sorting of post by timestamp
-            if($first_occurrence){
-                $clone[$ctr]=$blog;
-                $first_occurrence=false;
-            }else{
-                $clone[$ctr]=$blog;
-                for($sort=$ctr; $sort>0; $sort--){
-                    if($clone[$sort]["timestamp"]>$clone[$sort-1]["timestamp"]){
-                        $tmp=$clone[$sort];
-                        $clone[$sort]=$clone[$sort-1];
-                        $clone[$sort-1]=$tmp;
-                    }
+            /**
+             * Sort blog post by timestamp
+             * Sorting Algorithm: Insertion Sort(reverse)
+            **/
+            $clone[$ctr]=$blog; //clone the original array to preserve original array structure. maybe for the future use .
+            for($sort=$ctr; $sort>0; $sort--) {
+                if ($clone[$sort]["timestamp"] > $clone[$sort - 1]["timestamp"]) {
+                    $tmp = $clone[$sort];
+                    $clone[$sort] = $clone[$sort - 1];
+                    $clone[$sort - 1] = $tmp;
                 }
             }
             $ctr++;
         }
 
-        //display post according to timestamp
+        //display sorted post according to timestamp
         for($sort=0; $sort<$ctr; $sort++){
             echo "
                 <br>
@@ -191,7 +191,5 @@ class Account extends MySQLDatabase
                         </div>
             ";
         }
-
-
     }
 }

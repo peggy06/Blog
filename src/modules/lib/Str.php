@@ -5,6 +5,10 @@
  * User: jimuelpalaca
  * Date: 7/27/2016
  * Time: 2:37 AM
+ *
+ * wag niyo po sanang pagtawanan xD haha
+ * gawa-gawa ko lang po xD
+ * inspired sa Laravel
  */
 class Str
 {
@@ -21,7 +25,5 @@ class Str
         }
 
         return $random;
-
-        //wag niyo po sana pagtawanan 'to sir cadag xD haha , gawa-gawa ko lang po .
     }
 }
